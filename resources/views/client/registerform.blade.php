@@ -52,20 +52,30 @@
                     <div class="form-group row">
                         <label for="password1" class="col-sm-2 col-form-label">Password: </label>
                         <div class="col-sm-10">
-                          <input name="password1" type="password" class="form-control" required>
+                          <input name="password1" type="password" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) " class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="password2" class="col-sm-2 col-form-label">Retype Password: </label>
                         <div class="col-sm-10">
-                          <input name="password2" type="password" class="form-control" required>
+                          <input name="password2" type="password" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) " class="form-control" required>
                         </div>
                     </div>
+                    @if (session('msg'))
+                    <div class="alert alert-success" role="alert">
+                        {{session('msg')}}
+                    </div>
+                    @endif
+                    @if (session('msgerr'))
+                        <div class="alert alert-danger" role="alert">
+                            {{session('msgerr')}}
+                        </div>
+                    @endif
                 
                     <br>
                     <hr>
-                    <p>By clicking Register, you agree to our Terms, Data Policy and Cookies Policy. You may receive SMS Notifications from us and can opt out any time.</p>
+                    <p>By clicking Register, you agree to our Terms, Data Policy and Cookies Policy.</p>
 
                     <div class="form-group row">
                         <div class="col-sm-6"></div>

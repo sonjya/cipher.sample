@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//get -----------------------------------------------------------
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,5 +24,18 @@ Route::get('/login', function () {
 Route::get('/registration', function () {
     return view('client.registerform');
 });
+Route::get('/main', function () {
+   if(session('isactive')=='YES'){
+    return view('client.mainform');
+   }else{
+       return redirect()->back();
+   };
+});
+Route::get('/logout', function () {
+    session(['isactive' => "NO"]);
+    return view('loginform');
+});
 
+//post ---------------------------------------------------------
 Route::post('/register',[ValidationController::class,'register']);
+Route::post('/signin',[ValidationController::class,'login']);

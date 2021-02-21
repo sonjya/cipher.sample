@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-sm-4">
                         <label for="password">Password </label>
-                        <input type="password" name="password" class="form-control" required>
+                        <input type="password" name="password" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" class="form-control" required>
                     </div>
                     <div class="col-sm-4">
                         <br><button type="submit" class="btn btn-outline-success">Login</button>
@@ -36,7 +36,18 @@
 
                 <div class="col-sm-5">
                     <p>Not a member yet? <a href="/registration"><u>Register here.</u></a></p>
-                </div>   
+                </div> 
+
+                @if (session('msg'))
+                <div class="alert alert-success" role="alert">
+                    {{session('msg')}}
+                </div>
+                @endif
+                @if (session('msgerr'))
+                    <div class="alert alert-danger" role="alert">
+                        {{session('msgerr')}}
+                    </div>
+                @endif
 
             </div>
             
